@@ -1,0 +1,4 @@
+---
+build:
+  capability: pipeline
+  metadata: pipeline.yml
