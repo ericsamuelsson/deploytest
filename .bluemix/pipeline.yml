@@ -7,14 +7,14 @@ stages:
   triggers:
   - type: commit
   jobs:
-  - name: Build
+  - name: build
     type: builder
     build_type: shell
     script: |-
       #!/bin/bash
       # your script here
       echo test
-- name: MyStage
+- name: esa deploy
   inputs:
   - type: job
     stage: esa build
@@ -22,7 +22,7 @@ stages:
   triggers:
   - type: stage
   jobs:
-  - name: esa deploy
+  - name: deploy
     type: deployer
     target:
       url: https://api.ng.bluemix.net
