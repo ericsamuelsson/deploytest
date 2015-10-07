@@ -25,10 +25,28 @@ stages:
   - name: deploy
     type: deployer
     target:
-      url: https://api.ng.bluemix.net
-      organization: eric.samuelsson@se.ibm.com
-      space: dev
-      application: deploytest
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
+    script: |
+      #!/bin/bash
+      echo YYY
+- name: esa deploy2
+  inputs:
+  - type: job
+    stage: esa build
+    job: Build
+  triggers:
+  - type: stage
+  jobs:
+  - name: deploy
+    type: deployer
+    target:
+      url: ${CF_TARGET_URL}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
     script: |
       #!/bin/bash
       echo YYY
